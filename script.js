@@ -322,131 +322,39 @@ function highlightVariantCard(key) {
 }
 
 // =========================================================================
-// 4. LUXURY POSTER & AMBIENT SOUNDTRACK STUDIO CONTROLS
+// 4. FEATURED VIDEO & CALMING AMBIENT AUDIO CONTROLS
 // =========================================================================
-const POSTER_SCENES = {
-  atelier: {
-    type: 'poster',
-    src: 'assets/posters/poster-atelier.jpg',
-    tag: 'THE TRIO COLLECTION • ATELIER EDITION',
-    caption: '“In the Heart of the Fragrant Velaire — Classic soul, modern scent.”'
-  },
-  botanical: {
-    type: 'poster',
-    src: 'assets/posters/poster-botanical.jpg',
-    tag: 'BOTANICAL CHAMOMILE GARDEN • AURÉNTTE',
-    caption: '“Your secret scent, bottled amidst fresh blooming meadow flowers.”'
-  },
-  'silk-video': {
-    type: 'video',
-    src: 'assets/canva/VAGfmGxAaiQ.mp4',
-    poster: 'assets/posters/poster-silk.jpg',
-    tag: 'GOLDEN SILK MOTION • EAU DE PARFUM',
-    caption: '“Kemewahan aroma yang mengalir lembut bagai helai sutra emas.”'
-  }
-};
+function toggleFeaturedVideoPlay() {
+  const vid = document.getElementById('featuredVideo');
+  const btn = document.getElementById('vidPlayBtn');
+  if (!vid || !btn) return;
 
-const AMBIENT_TRACKS = {
-  atelier: {
-    title: 'Parisian Atelier (Lounge Piano)',
-    src: 'assets/audio/parisian-atelier.mp3'
-  },
-  garden: {
-    title: 'Secret Garden (Botanical Harp & Chimes)',
-    src: 'assets/audio/secret-garden.mp3'
-  },
-  classic: {
-    title: 'Classic Lounge (Original Track)',
-    src: 'assets/audio/classic-canva.mp3'
-  }
-};
-
-function switchShowcasePoster(sceneKey, btnEl) {
-  const scene = POSTER_SCENES[sceneKey];
-  if (!scene) return;
-
-  const posterImg = document.getElementById('featuredPosterImg');
-  const videoEl = document.getElementById('featuredVideo');
-  const tagEl = document.getElementById('posterSceneTag');
-  const capEl = document.getElementById('posterSceneCaption');
-
-  if (btnEl) {
-    btnEl.parentElement.querySelectorAll('.dock-pill').forEach(b => b.classList.remove('active'));
-    btnEl.classList.add('active');
-  }
-
-  if (tagEl) tagEl.textContent = scene.tag;
-  if (capEl) capEl.textContent = scene.caption;
-
-  if (scene.type === 'video') {
-    if (posterImg) posterImg.classList.remove('active-poster');
-    if (videoEl) {
-      videoEl.currentTime = 0;
-      videoEl.play().catch(() => {});
-    }
+  if (vid.paused) {
+    vid.play();
+    btn.innerHTML = '<i class="fa-solid fa-pause"></i>';
   } else {
-    if (posterImg) {
-      posterImg.classList.remove('active-poster');
-      posterImg.src = scene.src;
-      // Trigger smooth Ken Burns zoom-in
-      requestAnimationFrame(() => {
-        posterImg.classList.add('active-poster');
-      });
-    }
+    vid.pause();
+    btn.innerHTML = '<i class="fa-solid fa-play"></i>';
   }
 }
 
-function updateAudioUI(isPlaying) {
-  const btn = document.getElementById('audioToggleBtn');
-  const eq = document.getElementById('eqBars');
-  if (!btn) return;
-  if (isPlaying) {
-    btn.classList.add('playing');
-    btn.innerHTML = '<i class="fa-solid fa-pause"></i> <span>Jeda Lagu Ambient</span>';
-    eq?.classList.add('playing');
-  } else {
-    btn.classList.remove('playing');
-    btn.innerHTML = '<i class="fa-solid fa-play"></i> <span>Putar Lagu Ambient</span>';
-    eq?.classList.remove('playing');
-  }
-}
-
-function toggleAmbientMusic() {
+function toggleFeaturedVideoMute() {
   const audio = document.getElementById('ambientAudioPlayer');
-  if (!audio) return;
+  const btn = document.getElementById('vidMuteBtn');
+  if (!audio || !btn) return;
+
   if (audio.paused) {
-    audio.volume = 0.75;
+    audio.volume = 0.65;
     audio.play().then(() => {
-      updateAudioUI(true);
+      btn.innerHTML = '<i class="fa-solid fa-volume-high"></i> <span>Mute Audio</span>';
+      showToast('🎵 Memutar alunan musik elegan Velaire');
     }).catch(() => {
-      showToast('Klik sekali lagi untuk mengaktifkan audio di browser Anda');
+      showToast('Klik sekali lagi untuk mengaktifkan musik latar');
     });
   } else {
     audio.pause();
-    updateAudioUI(false);
+    btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i> <span>Unmute Audio</span>';
   }
-}
-
-function switchAmbientTrack(trackKey, btnEl) {
-  const track = AMBIENT_TRACKS[trackKey];
-  const audio = document.getElementById('ambientAudioPlayer');
-  const titleEl = document.getElementById('nowPlayingTitle');
-  if (!track || !audio) return;
-
-  if (btnEl) {
-    btnEl.parentElement.querySelectorAll('.dock-pill').forEach(b => b.classList.remove('active'));
-    btnEl.classList.add('active');
-  }
-
-  if (titleEl) titleEl.textContent = track.title;
-  audio.src = track.src;
-  audio.volume = 0.75;
-  audio.play().then(() => {
-    updateAudioUI(true);
-    showToast(`🎵 Memutar: ${track.title}`);
-  }).catch(() => {
-    updateAudioUI(false);
-  });
 }
 
 // =========================================================================

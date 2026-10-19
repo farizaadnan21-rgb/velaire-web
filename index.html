@@ -153,9 +153,8 @@
         </div>
       </div>
 
-      <!-- Track 1: Luxury Visual Poster & Ambient Soundtrack Showcase -->
-      <div class="intro-video-showcase" id="introShowcaseBg">
-        <!-- Ambient Background Video (Golden Silk Bottle) -->
+      <!-- Track 1: Video & Ambient Elegance Showcase (Single Minimalist Frame) -->
+      <div class="intro-video-showcase">
         <video class="ambient-bg-video" autoplay muted loop playsinline poster="assets/posters/poster-silk.jpg">
           <source src="assets/canva/VAGfmGxAaiQ.mp4" type="video/mp4">
         </video>
@@ -164,75 +163,27 @@
         <div class="container text-center reveal-up">
           <img src="assets/canva/logo-white.png" alt="Velaire Logo" class="video-top-logo">
 
-          <div class="featured-video-frame" id="showcaseStage">
-            <!-- Video / Poster Display Layer -->
-            <video id="featuredVideo" class="featured-product-video" autoplay muted loop playsinline poster="assets/posters/poster-atelier.jpg">
+          <div class="featured-video-frame">
+            <video id="featuredVideo" class="featured-product-video" autoplay muted loop playsinline poster="assets/posters/poster-silk.jpg">
               <source src="assets/canva/VAGfmGxAaiQ.mp4" type="video/mp4">
             </video>
-            <img id="featuredPosterImg" src="assets/posters/poster-atelier.jpg" alt="Velaire Luxury Poster" class="featured-poster-img active-poster">
 
-            <!-- Brand Typography Overlay -->
             <div class="video-brand-overlay">
-              <span class="poster-scene-tag" id="posterSceneTag">THE TRIO COLLECTION • ATELIER EDITION</span>
               <h3 class="video-overlay-title">Velaire</h3>
               <span class="video-overlay-sub">PERFUME</span>
-              <p class="poster-scene-caption" id="posterSceneCaption">“In the Heart of the Fragrant Velaire — Classic soul, modern scent.”</p>
             </div>
 
-            <!-- Audio Player Element -->
-            <audio id="ambientAudioPlayer" loop preload="auto" src="assets/audio/parisian-atelier.mp3"></audio>
+            <audio id="ambientAudioPlayer" loop preload="auto" src="assets/audio/velaire-elegance.mp3"></audio>
 
-            <!-- Top-Left Now Playing Indicator -->
-            <div class="now-playing-pill" id="nowPlayingPill">
-              <div class="eq-bars" id="eqBars">
-                <span></span><span></span><span></span><span></span>
-              </div>
-              <span id="nowPlayingTitle">Parisian Atelier (Lounge Piano)</span>
-            </div>
-
-            <!-- Bottom-Right Controls -->
             <div class="video-controls-bar">
-              <button class="vid-ctrl-btn primary-audio-btn" id="audioToggleBtn" onclick="toggleAmbientMusic()">
-                <i class="fa-solid fa-play"></i> <span>Putar Lagu Ambient</span>
+              <button class="vid-ctrl-btn" id="vidPlayBtn" onclick="toggleFeaturedVideoPlay()" title="Play / Pause Video">
+                <i class="fa-solid fa-pause"></i>
+              </button>
+              <button class="vid-ctrl-btn" id="vidMuteBtn" onclick="toggleFeaturedVideoMute()" title="Putar / Bisu Musik Latar">
+                <i class="fa-solid fa-volume-xmark"></i> <span>Unmute Audio</span>
               </button>
             </div>
           </div>
-
-          <!-- Interactive Poster & Soundtrack Switcher Dock -->
-          <div class="showcase-switcher-dock">
-            <div class="dock-group">
-              <span class="dock-label"><i class="fa-regular fa-image"></i> Pilih Poster / Visual:</span>
-              <div class="dock-pills">
-                <button class="dock-pill active" onclick="switchShowcasePoster('atelier', this)">
-                  ✨ Trio Atelier Poster
-                </button>
-                <button class="dock-pill" onclick="switchShowcasePoster('botanical', this)">
-                  🌼 Botanical Garden Poster
-                </button>
-                <button class="dock-pill" onclick="switchShowcasePoster('silk-video', this)">
-                  🎬 Golden Silk Motion
-                </button>
-              </div>
-            </div>
-
-            <div class="dock-divider"></div>
-
-            <div class="dock-group">
-              <span class="dock-label"><i class="fa-solid fa-music"></i> Pilih Lagu Latar:</span>
-              <div class="dock-pills">
-                <button class="dock-pill active" onclick="switchAmbientTrack('atelier', this)">
-                  🎹 Parisian Atelier
-                </button>
-                <button class="dock-pill" onclick="switchAmbientTrack('garden', this)">
-                  🌿 Secret Garden
-                </button>
-                <button class="dock-pill" onclick="switchAmbientTrack('classic', this)">
-                  🎻 Classic Lounge
-                </button>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
