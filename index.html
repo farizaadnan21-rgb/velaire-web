@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VELAIRE PERFUME — In The Heart of The Fragrant Velaire</title>
+  <meta name="description" content="Velaire adalah brand parfum mewah dengan karakter aroma modern dan elegan. Temukan varian favoritmu: MyÓtte, Auréntte, dan Coondette.">
+  <link rel="icon" type="image/png" href="assets/canva/logo-brown.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container">
+      <span>✨ Official Store <strong>VELAIRE PERFUME</strong> — Eau De Parfum 30ml mulai Rp 20.000,- • Pengiriman dari Depok, Jawa Barat</span>
+      <a href="https://wa.me/6283872023645?text=Halo%20Velaire,%20saya%20ingin%20tanya%20seputar%20varian%20parfum" target="_blank" class="announcement-link">
+        <i class="fa-brands fa-whatsapp"></i> Konsultasi Gratis
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Sticky Navigation Bar -->
+  <header class="site-header" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo">
+        <img src="assets/canva/logo-white.png" alt="Velaire Logo" class="nav-logo-img">
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-item active">Home</a>
+        <a href="#intro" class="nav-item">Intro</a>
+        <a href="#about" class="nav-item">About</a>
+        <a href="#varian" class="nav-item">Our Varian</a>
+        <a href="#press" class="nav-item">Press</a>
+        <a href="#contact" class="nav-item">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="cart-trigger-btn" id="cartTriggerBtn" onclick="toggleCartDrawer()" aria-label="Buka Tas Belanja">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-label">Tas Belanja</span>
+          <span class="cart-badge" id="cartCountBadge">0</span>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Buka Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================================================================
+         1. HOME SECTION (3 Tracks from Original Canva)
+         =================================================================== -->
+    <section id="home" class="home-section">
+      <!-- Track 0: Hero Banner -->
+      <div class="hero-banner">
+        <div class="hero-bg-layer" style="background-image: url('assets/canva/MAHYbJREzU4.jpg');"></div>
+        <div class="hero-botanical-layer" style="background-image: url('assets/canva/MAGmCIgfyFY.png');"></div>
+        <div class="hero-bg-overlay"></div>
+
+        <div class="hero-content reveal-up">
+          <div class="hero-pretitle">WELCOME TO</div>
+          <h1 class="hero-title">Velaire</h1>
+          <div class="hero-subtitle">PERFUME</div>
+          <div class="hero-actions">
+            <a href="#intro" class="btn btn-solid">Learn More</a>
+            <a href="#varian" class="btn btn-outline">Explore Scent</a>
+          </div>
+        </div>
+
+        <a href="#home-quote" class="scroll-down-indicator" aria-label="Scroll ke bawah">
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+      </div>
+
+      <!-- Track 1: Brand Tagline Banner -->
+      <div id="home-quote" class="home-tagline-banner">
+        <div class="container text-center reveal-up">
+          <img src="assets/canva/logo-white.png" alt="Velaire Monogram" class="tagline-logo">
+          <h2 class="tagline-script">-Classic soul, modern scent-</h2>
+          <p class="tagline-sub">IN THE HEART OF THE FRAGRANT VELAIRE</p>
+        </div>
+      </div>
+
+      <!-- Track 2: 3 Signature Variants Showcase -->
+      <div class="home-trio-showcase" style="background-image: url('assets/canva/MAHYbU9M95Q.png');">
+        <div class="trio-overlay"></div>
+        <div class="container">
+          <div class="trio-grid">
+            <a href="#varian" class="trio-box reveal-up" style="transition-delay: 0.05s;" onclick="highlightVariantCard('myotte')">
+              <div class="trio-icon-wrap">
+                <img src="assets/canva/icon_myotte.svg" alt="Velaire MyÓtte Icon" class="trio-icon">
+              </div>
+              <h3>Velaire<br>MyÓtte</h3>
+              <span class="trio-tag">Sweet • Floral • Gourmand</span>
+            </a>
+
+            <a href="#varian" class="trio-box reveal-up" style="transition-delay: 0.15s;" onclick="highlightVariantCard('aurentte')">
+              <div class="trio-icon-wrap">
+                <img src="assets/canva/icon_MAFyjyKhhls.png" alt="Velaire Auréntte Icon" class="trio-icon">
+              </div>
+              <h3>Velaire<br>Auréntte</h3>
+              <span class="trio-tag">Aquatic • Fresh • Clean</span>
+            </a>
+
+            <a href="#varian" class="trio-box reveal-up" style="transition-delay: 0.25s;" onclick="highlightVariantCard('coondette')">
+              <div class="trio-icon-wrap">
+                <img src="assets/canva/icon_MAHRAuiOeYs.png" alt="Velaire Coondette Icon" class="trio-icon">
+              </div>
+              <h3>Velaire<br>Coondette</h3>
+              <span class="trio-tag">Warm • Woody • Amber</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         2. INTRO SECTION (Editorial Bottle + Original Canva Videos)
+         =================================================================== -->
+    <section id="intro" class="intro-section">
+      <!-- Track 0: Your secret scent, bottled -->
+      <div class="intro-editorial-wrap">
+        <div class="container text-center">
+          <h2 class="intro-main-heading reveal-up">Your secret scent, bottled</h2>
+
+          <div class="intro-framed-photo-wrap reveal-up">
+            <div class="intro-outer-frame">
+              <img src="assets/canva/MAHYbctZ14Y.jpg" alt="Velaire Secret Scent Bottled" class="intro-bottle-photo">
+            </div>
+          </div>
+
+          <p class="intro-editorial-text reveal-up">
+            We create perfumes with a pleasant, clean scent that appeals to a wide range of people.
+            It’s a blend of familiar, classic notes with a fresh, modern twist—resulting in a fragrance
+            that feels unique, yet perfectly accessible.
+          </p>
+        </div>
+      </div>
+
+      <!-- Track 1: Luxury Visual Poster & Ambient Soundtrack Showcase -->
+      <div class="intro-video-showcase" id="introShowcaseBg">
+        <!-- Ambient Background Video (Golden Silk Bottle) -->
+        <video class="ambient-bg-video" autoplay muted loop playsinline poster="assets/posters/poster-silk.jpg">
+          <source src="assets/canva/VAGfmGxAaiQ.mp4" type="video/mp4">
+        </video>
+        <div class="ambient-video-overlay"></div>
+
+        <div class="container text-center reveal-up">
+          <img src="assets/canva/logo-white.png" alt="Velaire Logo" class="video-top-logo">
+
+          <div class="featured-video-frame" id="showcaseStage">
+            <!-- Video / Poster Display Layer -->
+            <video id="featuredVideo" class="featured-product-video" autoplay muted loop playsinline poster="assets/posters/poster-atelier.jpg">
+              <source src="assets/canva/VAGfmGxAaiQ.mp4" type="video/mp4">
+            </video>
+            <img id="featuredPosterImg" src="assets/posters/poster-atelier.jpg" alt="Velaire Luxury Poster" class="featured-poster-img active-poster">
+
+            <!-- Brand Typography Overlay -->
+            <div class="video-brand-overlay">
+              <span class="poster-scene-tag" id="posterSceneTag">THE TRIO COLLECTION • ATELIER EDITION</span>
+              <h3 class="video-overlay-title">Velaire</h3>
+              <span class="video-overlay-sub">PERFUME</span>
+              <p class="poster-scene-caption" id="posterSceneCaption">“In the Heart of the Fragrant Velaire — Classic soul, modern scent.”</p>
+            </div>
+
+            <!-- Audio Player Element -->
+            <audio id="ambientAudioPlayer" loop preload="auto" src="assets/audio/parisian-atelier.mp3"></audio>
+
+            <!-- Top-Left Now Playing Indicator -->
+            <div class="now-playing-pill" id="nowPlayingPill">
+              <div class="eq-bars" id="eqBars">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <span id="nowPlayingTitle">Parisian Atelier (Lounge Piano)</span>
+            </div>
+
+            <!-- Bottom-Right Controls -->
+            <div class="video-controls-bar">
+              <button class="vid-ctrl-btn primary-audio-btn" id="audioToggleBtn" onclick="toggleAmbientMusic()">
+                <i class="fa-solid fa-play"></i> <span>Putar Lagu Ambient</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Poster & Soundtrack Switcher Dock -->
+          <div class="showcase-switcher-dock">
+            <div class="dock-group">
+              <span class="dock-label"><i class="fa-regular fa-image"></i> Pilih Poster / Visual:</span>
+              <div class="dock-pills">
+                <button class="dock-pill active" onclick="switchShowcasePoster('atelier', this)">
+                  ✨ Trio Atelier Poster
+                </button>
+                <button class="dock-pill" onclick="switchShowcasePoster('botanical', this)">
+                  🌼 Botanical Garden Poster
+                </button>
+                <button class="dock-pill" onclick="switchShowcasePoster('silk-video', this)">
+                  🎬 Golden Silk Motion
+                </button>
+              </div>
+            </div>
+
+            <div class="dock-divider"></div>
+
+            <div class="dock-group">
+              <span class="dock-label"><i class="fa-solid fa-music"></i> Pilih Lagu Latar:</span>
+              <div class="dock-pills">
+                <button class="dock-pill active" onclick="switchAmbientTrack('atelier', this)">
+                  🎹 Parisian Atelier
+                </button>
+                <button class="dock-pill" onclick="switchAmbientTrack('garden', this)">
+                  🌿 Secret Garden
+                </button>
+                <button class="dock-pill" onclick="switchAmbientTrack('classic', this)">
+                  🎻 Classic Lounge
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         3. ABOUT SECTION (Story + 3 Portrait Gallery + Scent Anatomy)
+         =================================================================== -->
+    <section id="about" class="about-section">
+      <!-- Track 0: About Us Narrative & Group Photo -->
+      <div class="about-story-block">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-text-col reveal-up">
+              <h2 class="about-big-title">About Us</h2>
+              <p class="about-tagline-caps">IN THE HEART OF THE FRAGRANT VELAIRE</p>
+              <p class="about-lead">
+                <strong>Velaire</strong> adalah brand parfum yang menggambarkan keanggunan, kemewahan, dan keunikan aroma. Nama ini memiliki nuansa modern dan elegan yang sesuai dengan karakter parfum kami.
+              </p>
+              <p class="about-body">
+                Dengan desain yang simpel dan mewah, <strong>VELAIRE</strong> ingin menghadirkan parfum yang cocok digunakan dalam berbagai kesempatan. Setiap aroma dirancang untuk mengekspresikan karakter, meningkatkan kepercayaan diri, dan memberikan kesan tersendiri bagi penggunanya. Tagline <em>“In the Heart of the Fragrant VELAIRE”</em> menggambarkan keharuman yang menjadi ciri khas dan identitas VELAIRE.
+              </p>
+            </div>
+
+            <div class="about-image-col reveal-up">
+              <div class="about-group-photo-card">
+                <img src="assets/canva/MAHYbBmytao.jpg" alt="Velaire MyÓtte, Velaire Auréntte, Velaire Coondette" class="about-group-img">
+                <p class="about-photo-caption">Velaire MyÓtte, Velaire Auréntte, Velaire Coondette</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Track 1: 3 Vertical Portraits (Empty Caption Boxes as Requested) -->
+      <div class="about-gallery-strip">
+        <div class="container">
+          <div class="gallery-strip-grid">
+            <div class="gallery-portrait-item reveal-up" style="transition-delay: 0.05s;">
+              <div class="portrait-img-box">
+                <img src="assets/canva/MAHYbzC-qWU.png" alt="Velaire MyÓtte Portrait">
+              </div>
+              <div class="portrait-caption-empty"></div>
+            </div>
+
+            <div class="gallery-portrait-item reveal-up" style="transition-delay: 0.15s;">
+              <div class="portrait-img-box">
+                <img src="assets/canva/MAHYbwWYrsI.png" alt="Velaire Auréntte Portrait">
+              </div>
+              <div class="portrait-caption-empty"></div>
+            </div>
+
+            <div class="gallery-portrait-item reveal-up" style="transition-delay: 0.25s;">
+              <div class="portrait-img-box">
+                <img src="assets/canva/MAHYbwTI5Gw.png" alt="Velaire Coondette Portrait">
+              </div>
+              <div class="portrait-caption-empty"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Track 2: Our Velaire Scent — Anatomy of Ingredients -->
+      <div class="about-anatomy-block">
+        <div class="container">
+          <div class="text-center reveal-up">
+            <span class="section-badge">KOMPOSISI FORMULASI</span>
+            <h2 class="section-title">Our Velaire Scent</h2>
+            <p class="section-desc">Setiap tetes Velaire diracik dari 3 elemen murni berstandar tinggi untuk menghasilkan difusi wangi yang halus, aman di kulit, dan tahan lama.</p>
+          </div>
+
+          <div class="anatomy-diagram reveal-up">
+            <!-- Left Callouts -->
+            <div class="anatomy-col anatomy-left">
+              <div class="anatomy-callout-card">
+                <div class="callout-badge">01 • CARRIER BASE</div>
+                <h4>Alcohol Denat.</h4>
+                <span class="callout-sub">Solvent Base • Ethanol Base</span>
+                <p>Carrier utama berkualitas kosmetik untuk menyebarkan molekul wewangian (*fragrance diffusion*) secara merata dan cepat meresap tanpa rasa lengket.</p>
+                <div class="callout-line-right"></div>
+              </div>
+
+              <div class="anatomy-callout-card">
+                <div class="callout-badge">03 • BALANCING PURITY</div>
+                <h4>Aqua Demineralisata</h4>
+                <span class="callout-sub">Water • Demineralized Water</span>
+                <p>Air demineralisasi murni yang berfungsi sebagai *solvent & hydrator* guna menjaga kestabilan konsentrat parfum dan kelembutan di kulit.</p>
+                <div class="callout-line-right"></div>
+              </div>
+            </div>
+
+            <!-- Center Bottle Image from Canva Track 2 -->
+            <div class="anatomy-center">
+              <div class="anatomy-bottle-stage">
+                <img src="assets/canva/MAHYbfItzt0.png" alt="Velaire Perfume Anatomy" class="anatomy-main-photo">
+              </div>
+            </div>
+
+            <!-- Right Callout -->
+            <div class="anatomy-col anatomy-right">
+              <div class="anatomy-callout-card highlight">
+                <div class="callout-badge">02 • HEART OF SCENT</div>
+                <h4>Fragrance (Parfum)</h4>
+                <span class="callout-sub">Aroma Oils • Essential Oils & Aromatic Compounds</span>
+                <p>Minyak esensial dan senyawa aromatik pilihan yang membentuk *scent profile* khas Velaire dengan struktur Top, Middle, dan Base notes berlapis.</p>
+                <div class="callout-line-left"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         4. OUR VARIAN SECTION (Original Product Photos + Scent Bars + Quiz)
+         =================================================================== -->
+    <section id="varian" class="varian-section">
+      <div class="container">
+        <div class="text-center section-header reveal-up">
+          <span class="section-badge">KOLEKSI SIGNATURE</span>
+          <h2 class="section-title">Our Velaire Scent</h2>
+          <p class="section-desc">Tiga mahakarya wewangian dalam kemasan Eau De Parfum 30ml yang praktis dan mewah.</p>
+          <div class="price-banner">
+            Harga Spesial <span class="price-highlight">from Rp 20.000,-</span> / 30ml
+          </div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-tabs reveal-up">
+          <button class="filter-btn active" data-filter="all">Semua Varian (3)</button>
+          <button class="filter-btn" data-filter="sweet">Sweet & Floral</button>
+          <button class="filter-btn" data-filter="fresh">Aquatic & Fresh</button>
+          <button class="filter-btn" data-filter="warm">Warm & Woody</button>
+        </div>
+
+        <!-- Products Grid (Order & Photos Matching Original Canva Section 3) -->
+        <div class="products-grid">
+
+          <!-- 1. Velaire MyÓtte (Canva Photo: MAHYbKwPWeU.jpg) -->
+          <div class="product-card reveal-up" id="card-myotte" data-category="sweet">
+            <div class="product-badge sweet-badge">Sweet & Feminine</div>
+            <div class="product-img-wrap">
+              <img src="assets/canva/MAHYbKwPWeU.jpg" alt="Velaire MyÓtte 30ml" class="product-img">
+              <div class="product-overlay-action">
+                <button class="btn-quick-view" onclick="openVariantModal('myotte')">
+                  <i class="fa-solid fa-expand"></i> Lihat Detail & Notes
+                </button>
+              </div>
+            </div>
+
+            <div class="product-info">
+              <div class="product-meta">
+                <span class="product-volume">30 ml • Eau De Parfum</span>
+                <span class="product-price">from Rp 20.000,-</span>
+              </div>
+              <h3 class="product-name">Velaire MyÓtte</h3>
+              <p class="product-vibe">Sweet, Fruity, Floral, Fresh & Elegant</p>
+
+              <p class="product-short-desc">
+                Aroma feminin yang manis, floral, dan gourmand berkelas dengan sentuhan raspberry segar, kelopak peony, dan praline yang romantis.
+              </p>
+
+              <!-- Scent Character Bars -->
+              <div class="scent-bars">
+                <div class="sbar-row">
+                  <span>Sweetness</span>
+                  <div class="sbar-track"><div class="sbar-fill" style="width: 90%;"></div></div>
+                </div>
+                <div class="sbar-row">
+                  <span>Floral</span>
+                  <div class="sbar-track"><div class="sbar-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="sbar-row">
+                  <span>Longevity</span>
+                  <div class="sbar-track"><div class="sbar-fill" style="width: 82%;"></div></div>
+                </div>
+              </div>
+
+              <div class="scent-notes-preview">
+                <div class="note-row"><span class="note-label">Top:</span><span class="note-val">Raspberry</span></div>
+                <div class="note-row"><span class="note-label">Middle:</span><span class="note-val">Peony</span></div>
+                <div class="note-row"><span class="note-label">Base:</span><span class="note-val">Praline</span></div>
+              </div>
+
+              <p class="product-ingredients-mini">
+                <strong>Komposisi:</strong> Alcohol Denat., Fragrance (Parfum), Aqua Demineralisata.
+              </p>
+
+              <div class="product-buttons">
+                <button class="btn btn-card-details" onclick="openVariantModal('myotte')">Detail</button>
+                <button class="btn btn-card-cart" onclick="addToCart('myotte')">
+                  <i class="fa-solid fa-plus"></i> Tambah ke Tas
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Velaire Auréntte (Canva Photo: MAHYbPIGQrQ.jpg) -->
+          <div class="product-card reveal-up" id="card-aurentte" data-category="fresh">
+            <div class="product-badge">Best Seller</div>
+            <div class="product-img-wrap">
+              <img src="assets/canva/MAHYbPIGQrQ.jpg" alt="Velaire Auréntte 30ml" class="product-img">
+              <div class="product-overlay-action">
+                <button class="btn-quick-view" onclick="openVariantModal('aurentte')">
+                  <i class="fa-solid fa-expand"></i> Lihat Detail & Notes
+                </button>
+              </div>
+            </div>
+
+            <div class="product-info">
+              <div class="product-meta">
+                <span class="product-volume">30 ml • Eau De Parfum</span>
+                <span class="product-price">from Rp 20.000,-</span>
+              </div>
+              <h3 class="product-name">Velaire Auréntte</h3>
+              <p class="product-vibe">Aquatic, Fresh & Floral</p>
+
+              <p class="product-short-desc">
+                Aroma fresh aquatic yang bersih dengan kesegaran ocean breeze ala hembusan angin laut. Ringan, menenangkan, dan nyaman dipakai seharian.
+              </p>
+
+              <!-- Scent Character Bars -->
+              <div class="scent-bars">
+                <div class="sbar-row">
+                  <span>Freshness</span>
+                  <div class="sbar-track"><div class="sbar-fill" style="width: 95%;"></div></div>
+                </div>
+                <div class="sbar-row">
+                  <span>Floral</span>
+                  <div class="sbar-track"><div class="sbar-fill" style="width: 80%;"></div></div>
+                </div>
+                <div class="sbar-row">
+                  <span>Longevity</span>
+                  <div class="sbar-track"><div class="sbar-fill" style="width: 85%;"></div></div>
+                </div>
+              </div>
+
+              <div class="scent-notes-preview">
+                <div class="note-row"><span class="note-label">Top:</span><span class="note-val">Ocean Breeze, Freesia, Green Apple, Chamomile</span></div>
+                <div class="note-row"><span class="note-label">Middle:</span><span class="note-val">Lily of the Valley, Peony, Magnolia, Water Lily</span></div>
+                <div class="note-row"><span class="note-label">Base:</span><span class="note-val">Musk, Cedarwood, Amber, Soft Woods</span></div>
+              </div>
+
+              <p class="product-ingredients-mini">
+                <strong>Komposisi:</strong> Alcohol Denat., Fragrance (Parfum), Aqua Demineralisata.
+              </p>
+
+              <div class="product-buttons">
+                <button class="btn btn-card-details" onclick="openVariantModal('aurentte')">Detail</button>
+                <button class="btn btn-card-cart" onclick="addToCart('aurentte')">
+                  <i class="fa-solid fa-plus"></i> Tambah ke Tas
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Velaire Coondette (Canva Photo: MAHYbKIxIVQ.jpg) -->
+          <div class="product-card reveal-up" id="card-coondette" data-category="warm">
+            <div class="product-badge warm-badge">Signature Chic</div>
+            <div class="product-img-wrap">
+              <img src="assets/canva/MAHYbKIxIVQ.jpg" alt="Velaire Coondette 30ml" class="product-img">
+              <div class="product-overlay-action">
+                <button class="btn-quick-view" onclick="openVariantModal('coondette')">
+                  <i class="fa-solid fa-expand"></i> Lihat Detail & Notes
+                </button>
+              </div>
+            </div>
+
+            <div class="product-info">
+              <div class="product-meta">
+                <span class="product-volume">30 ml • Eau De Parfum</span>
+                <span class="product-price">from Rp 20.000,-</span>
+              </div>
+              <h3 class="product-name">Velaire Coondette</h3>
+              <p class="product-vibe">Warm, Woody, Amber & Sophisticated</p>
+
+              <p class="product-short-desc">
+                Perpaduan elegan citrus bergamot segar dengan kehangatan rempah pilihan, sandalwood, dan amber lembut yang memancarkan kharisma modern.
+              </p>
+
+              <!-- Scent Character Bars -->
+              <div class="scent-bars">
+                <div class="sbar-row">
+                  <span>Warm & Woody</span>
+                  <div class="sbar-track"><div class="sbar-fill" style="width: 92%;"></div></div>
+                </div>
+                <div class="sbar-row">
+                  <span>Elegance</span>
+                  <div class="sbar-track"><div class="sbar-fill" style="width: 90%;"></div></div>
+                </div>
+                <div class="sbar-row">
+                  <span>Longevity</span>
+                  <div class="sbar-track"><div class="sbar-fill" style="width: 88%;"></div></div>
+                </div>
+              </div>
+
+              <div class="scent-notes-preview">
+                <div class="note-row"><span class="note-label">Top:</span><span class="note-val">Italian Bergamot, Cardamom, Mandarin</span></div>
+                <div class="note-row"><span class="note-label">Middle:</span><span class="note-val">Lavender, White Jasmine, Warm Spices</span></div>
+                <div class="note-row"><span class="note-label">Base:</span><span class="note-val">Sandalwood, Golden Amber, Vanilla Bean</span></div>
+              </div>
+
+              <p class="product-ingredients-mini">
+                <strong>Komposisi:</strong> Alcohol Denat., Fragrance (Parfum), Aqua Demineralisata.
+              </p>
+
+              <div class="product-buttons">
+                <button class="btn btn-card-details" onclick="openVariantModal('coondette')">Detail</button>
+                <button class="btn btn-card-cart" onclick="addToCart('coondette')">
+                  <i class="fa-solid fa-plus"></i> Tambah ke Tas
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Interactive Scent Finder Quiz -->
+        <div class="scent-finder-box reveal-up">
+          <div class="finder-header">
+            <span class="section-badge">INTERACTIVE SCENT FINDER</span>
+            <h3>Bingung Memilih Varian yang Cocok?</h3>
+            <p>Pilih suasana dan karakter yang paling menggambarkan dirimu untuk melihat rekomendasi instan:</p>
+          </div>
+
+          <div class="finder-options">
+            <button class="finder-choice-btn" onclick="recommendScent('fresh')">
+              <i class="fa-solid fa-water"></i>
+              <strong>Segar & Menenangkan</strong>
+              <span>Suka wangi bersih seperti habis mandi & aktivitas outdoor</span>
+            </button>
+
+            <button class="finder-choice-btn" onclick="recommendScent('sweet')">
+              <i class="fa-solid fa-heart"></i>
+              <strong>Manis, Anggun & Romantis</strong>
+              <span>Suka wangi fruity-floral yang ceria, kalem, dan memikat</span>
+            </button>
+
+            <button class="finder-choice-btn" onclick="recommendScent('warm')">
+              <i class="fa-solid fa-fire-flame-curved"></i>
+              <strong>Hangat, Classy & Berkarakter</strong>
+              <span>Suka wangi woody-amber yang dewasa, elegan & tahan lama</span>
+            </button>
+          </div>
+
+          <div id="finderResult" class="finder-result" style="display: none;"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         5. PRESS SECTION (Full 1920x1280 Canva Daisy Image + Official Logo)
+         =================================================================== -->
+    <section id="press" class="press-section">
+      <div class="press-hero-banner" style="background-image: url('assets/canva/MAHYbKYeDF0.png');">
+        <div class="press-banner-overlay"></div>
+        <div class="press-banner-content reveal-up">
+          <div class="press-script-left">In the Press</div>
+          <div class="press-center-brand">
+            <img src="assets/canva/logo-white.png" alt="Velaire Logo" class="press-official-logo">
+          </div>
+          <div class="press-script-right">Of Velaire</div>
+        </div>
+      </div>
+
+      <!-- Empty Comment / Review Placeholders as Requested -->
+      <div class="press-quotes-container">
+        <div class="container">
+          <div class="quotes-grid">
+            <div class="quote-card empty-comment-card reveal-up" style="transition-delay: 0.05s;">
+              <div class="empty-comment-body">
+                <i class="fa-regular fa-comment-dots"></i>
+                <p>Belum ada ulasan / komentar</p>
+              </div>
+            </div>
+
+            <div class="quote-card empty-comment-card reveal-up" style="transition-delay: 0.15s;">
+              <div class="empty-comment-body">
+                <i class="fa-regular fa-comment-dots"></i>
+                <p>Belum ada ulasan / komentar</p>
+              </div>
+            </div>
+
+            <div class="quote-card empty-comment-card reveal-up" style="transition-delay: 0.25s;">
+              <div class="empty-comment-body">
+                <i class="fa-regular fa-comment-dots"></i>
+                <p>Belum ada ulasan / komentar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         6. CONTACT SECTION (Canva Contact Hero Banner + Info Details)
+         =================================================================== -->
+    <section id="contact" class="contact-section">
+      <!-- Track 0: Contact Hero Banner from Canva (MAHYbTNHkPc.png) -->
+      <div class="contact-hero-banner" style="background-image: url('assets/canva/MAHYbTNHkPc.png');">
+        <div class="contact-hero-overlay"></div>
+        <div class="container text-center reveal-up">
+          <img src="assets/canva/logo-white.png" alt="Velaire Logo" class="contact-top-logo">
+          <h2 class="contact-hero-title">Velaire</h2>
+          <span class="contact-hero-sub">PERFUME</span>
+        </div>
+      </div>
+
+      <!-- Track 1: Contact Information & Inquiry Form -->
+      <div class="contact-details-wrap">
+        <div class="container">
+          <div class="contact-grid">
+
+            <!-- Column 1: More Information -->
+            <div class="contact-info-block reveal-up">
+              <h3>More Information</h3>
+              <ul class="contact-details-list">
+                <li>
+                  <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div>
+                    <strong>Lokasi</strong>
+                    <span>Depok, Jawa Barat, Indonesia</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="contact-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                  <div>
+                    <strong>Telepon / WhatsApp</strong>
+                    <a href="https://wa.me/6283872023645" target="_blank">0838-7202-3645</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
+                  <div>
+                    <strong>Email</strong>
+                    <a href="mailto:aliciafk1804@gmail.com">aliciafk1804@gmail.com</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Column 2: Office Hours -->
+            <div class="contact-info-block reveal-up">
+              <h3>Office Hours</h3>
+              <div class="hours-box">
+                <div class="info-row">
+                  <span class="info-day">Monday to Friday</span>
+                  <span class="info-time">9:00 am to 5:00 pm</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-day">Saturday to Sunday</span>
+                  <span class="info-time text-muted">Close</span>
+                </div>
+              </div>
+
+              <div class="social-block">
+                <h3>Get Social</h3>
+                <div class="social-links-list">
+                  <a href="https://www.instagram.com/velaire.scent" target="_blank" class="social-pill">
+                    <i class="fa-brands fa-instagram"></i> Instagram @velaire.scent
+                  </a>
+                  <a href="https://www.tiktok.com/@velaire.scent" target="_blank" class="social-pill">
+                    <i class="fa-brands fa-tiktok"></i> TikTok @velaire.scent
+                  </a>
+                </div>
+                <p class="tag-us-note">Tag us in your photos!</p>
+              </div>
+            </div>
+
+            <!-- Column 3: Quick WhatsApp Message Form -->
+            <div class="contact-form-block reveal-up">
+              <h3><i class="fa-brands fa-whatsapp"></i> Pesan / Tanya Cepat</h3>
+              <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                <div class="form-group">
+                  <label for="name">Nama Lengkap</label>
+                  <input type="text" id="name" required placeholder="Masukkan nama Anda">
+                </div>
+                <div class="form-group">
+                  <label for="variant-select">Pilih Varian</label>
+                  <select id="variant-select">
+                    <option value="Velaire Auréntte (30ml)">Velaire Auréntte (30ml) — Aquatic & Fresh</option>
+                    <option value="Velaire MyÓtte (30ml)">Velaire MyÓtte (30ml) — Sweet & Floral</option>
+                    <option value="Velaire Coondette (30ml)">Velaire Coondette (30ml) — Warm & Woody</option>
+                    <option value="Bundle 3 Varian Velaire">Bundle Ketiga Varian (MyÓtte, Auréntte, Coondette)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="message">Catatan / Alamat Pengiriman</label>
+                  <textarea id="message" rows="2" placeholder="Contoh: Pesan 2 botol dikirim ke Beji, Depok"></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit-message">
+                  Kirim ke WhatsApp <i class="fa-solid fa-paper-plane"></i>
+                </button>
+              </form>
+            </div>
+
+          </div>
+
+          <div class="site-bottom-footer">
+            <p>© 2026 VELAIRE PERFUME — In the Heart of the Fragrant Velaire. All rights reserved.</p>
+            <div class="footer-links">
+              <a href="#home">Home</a>
+              <a href="#intro">Intro</a>
+              <a href="#about">About</a>
+              <a href="#varian">Our Varian</a>
+              <a href="#press">Press</a>
+              <a href="#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Variant Detail Modal -->
+  <div class="modal-backdrop" id="variantModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeVariantModal()" aria-label="Tutup Modal">&times;</button>
+      <div class="modal-content-grid" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Mini Cart Drawer (Multi-Variant Checkout) -->
+  <div class="cart-drawer-backdrop" id="cartBackdrop" onclick="toggleCartDrawer()"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <div>
+        <h3><i class="fa-solid fa-bag-shopping"></i> Tas Belanja Velaire</h3>
+        <span class="cart-header-sub">Checkout mudah langsung via WhatsApp</span>
+      </div>
+      <button class="cart-close-btn" onclick="toggleCartDrawer()" aria-label="Tutup Tas">&times;</button>
+    </div>
+
+    <div class="cart-drawer-body" id="cartItemsContainer">
+      <!-- Dynamic Cart Items -->
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-quick-add">
+        <span>Tambah cepat:</span>
+        <div class="quick-add-pills">
+          <button onclick="addToCart('myotte')">+ MyÓtte</button>
+          <button onclick="addToCart('aurentte')">+ Auréntte</button>
+          <button onclick="addToCart('coondette')">+ Coondette</button>
+        </div>
+      </div>
+      <div class="cart-total-row">
+        <span>Estimasi Total</span>
+        <strong id="cartTotalPrice">Rp 0</strong>
+      </div>
+      <button class="btn-checkout-wa" onclick="checkoutCartToWhatsApp()">
+        <i class="fa-brands fa-whatsapp"></i> Checkout Pesanan via WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast-notification"></div>
+
+  <!-- Floating WhatsApp Action Button -->
+  <a href="https://wa.me/6283872023645?text=Halo%20Velaire%20Perfume,%20saya%20ingin%20tanya%20produk" target="_blank" class="floating-wa-btn" title="Chat WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="floating-wa-tooltip">Chat Admin Velaire</span>
+  </a>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Kembali ke atas">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
