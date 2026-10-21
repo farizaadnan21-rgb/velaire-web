@@ -44,18 +44,18 @@ const VARIANTS_DATA = {
     id: 'coondette',
     name: 'Velaire Coondette',
     subtitle: 'Eau De Parfum (30ml)',
-    badge: 'Signature Chic',
+    badge: 'Signature Fresh & Woody',
     image: 'assets/canva/MAHYbKIxIVQ.jpg',
     priceNum: 20000,
     price: 'from Rp 20.000,-',
-    vibe: 'Warm, Woody, Amber & Sophisticated',
+    vibe: 'Fresh, Aquatic, & Warm Woody',
     description:
-      'Perpaduan karakter modern yang memikat lewat kesegaran Italian Bergamot dan Cardamom di awal, diikuti kehangatan rempah pilihan serta keanggunan kayu cendana (Sandalwood) dan Golden Amber di akhir. Dirancang untuk memancarkan aura tenang, dewasa, dan karismatik di setiap kesempatan.',
-    topNotes: 'Italian Bergamot, Cardamom, Mandarin Peel',
-    heartNotes: 'French Lavender, White Jasmine, Warm Spices',
-    baseNotes: 'Sandalwood, Golden Amber, Vanilla Bean, Soft Woods',
-    occasion: 'Acara formal, ngantor, pertemuan bisnis, hingga acara malam spesial.',
-    sillage: 'Strong & Classy (6 - 8 Jam)',
+      'Kombinasi wewangian yang menghadirkan kesegaran citrus manis dari buah leci, jeruk mandarin, dan bergamot, dipadukan dengan sensasi aquatic ala hembusan angin laut serta kelembutan sentuhan kayu Brazilian Rosewood yang bersih dan menyegarkan. Cocok bagi Anda yang menyukai wewangian berkarakter fresh, energik, dan memberikan kesan bersih yang mewah untuk dipakai sehari-hari.',
+    topNotes: 'Litchi, Mandarin Orange, Bergamot, Lotus',
+    heartNotes: 'Sea Notes, Orange, Brazilian Rosewood',
+    baseNotes: 'Tonka Bean, Amber, Benzoin, Musk',
+    occasion: 'Ideal untuk aktivitas harian, kuliah, kegiatan luar ruangan, hingga acara malam hari.',
+    sillage: 'Fresh & Long-Lasting (6 - 8 Jam)',
     ingredients: 'Alcohol Denat., Fragrance (Parfum), Aqua Demineralisata.'
   }
 };
