@@ -140,8 +140,12 @@
           <h2 class="intro-main-heading reveal-up">Your secret scent, bottled</h2>
 
           <div class="intro-framed-photo-wrap reveal-up">
-            <div class="intro-outer-frame">
-              <img src="assets/canva/MAHYbctZ14Y.jpg" alt="Velaire Secret Scent Bottled" class="intro-bottle-photo">
+            <div class="intro-outer-frame intro-outer-frame--3d">
+              <!-- Interactive 3D Velaire bottle (bottle3d.js); photo stays as fallback if WebGL is unavailable -->
+              <div id="bottle3dStage" class="bottle3d-stage">
+                <img src="assets/canva/MAHYbctZ14Y.jpg" alt="Velaire Secret Scent Bottled" class="intro-bottle-photo bottle3d-fallback">
+                <span class="bottle3d-hint"><i class="fa-solid fa-arrows-left-right"></i> Geser untuk memutar</span>
+              </div>
             </div>
           </div>
 
@@ -755,5 +759,15 @@
   </button>
 
   <script src="script.js"></script>
+  <!-- Three.js (3D bottle in Intro) -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="bottle3d.js"></script>
 </body>
 </html>
