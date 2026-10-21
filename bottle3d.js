@@ -205,61 +205,112 @@ function initBottle(container) {
     });
   }
 
-  // Front label: compose logo + "EAU DE PARFUM" on a canvas for crisp gold print
-  function buildLabelTexture(logoImg) {
-    const W = 1024, H = 1200;
+  // Front label: oval black & gold medallion (VX · VELAIRE · MyÓtte · PERFUME)
+  // with the motto "IN THE HEART OF THE FRAGRANT VELAIRE" curved along the ring
+  function drawArcText(ctx, text, cx, cy, rx, ry, fromAngle, toAngle, bottom) {
+    const chars = [...text];
+    const step = (toAngle - fromAngle) / Math.max(chars.length - 1, 1);
+    chars.forEach((ch, i) => {
+      const t = fromAngle + i * step;
+      const x = cx + rx * Math.cos(t);
+      const y = cy + ry * Math.sin(t);
+      // tangent in reading direction (left → right on both arcs, upright letters)
+      const rot = bottom
+        ? Math.atan2(-ry * Math.cos(t), rx * Math.sin(t))
+        : Math.atan2(ry * Math.cos(t), -rx * Math.sin(t));
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rot);
+      ctx.fillText(ch, 0, 0);
+      ctx.restore();
+    });
+  }
+
+  function buildLabelTexture() {
+    const W = 1024, H = 1240;
+    const cx = W / 2, cy = H / 2;
     const cvs = document.createElement('canvas');
     cvs.width = W; cvs.height = H;
     const ctx = cvs.getContext('2d');
 
-    const logoW = 720;
-    const logoH = logoImg.height / logoImg.width * logoW;
-    ctx.drawImage(logoImg, (W - logoW) / 2, 40, logoW, logoH);
+    const goldGrad = ctx.createLinearGradient(0, 0, W, H);
+    goldGrad.addColorStop(0, '#c69b49');
+    goldGrad.addColorStop(0.35, '#ebd18a');
+    goldGrad.addColorStop(0.65, '#c59945');
+    goldGrad.addColorStop(1, '#e5c678');
 
-    const gradient = ctx.createLinearGradient(0, 0, W, 0);
-    gradient.addColorStop(0, '#b8893f');
-    gradient.addColorStop(0.5, '#f1d79a');
-    gradient.addColorStop(1, '#b8893f');
+    // 1. Matte black oval base
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, cx - 14, cy - 14, 0, 0, Math.PI * 2);
+    const bg = ctx.createRadialGradient(cx, cy - 140, 40, cx, cy, cy);
+    bg.addColorStop(0, '#1c1a1f');
+    bg.addColorStop(0.7, '#111114');
+    bg.addColorStop(1, '#09090b');
+    ctx.fillStyle = bg;
+    ctx.fill();
 
-    const lineY = 40 + logoH + 70;
-    ctx.fillStyle = gradient;
-    ctx.fillRect(W / 2 - 170, lineY, 340, 3);
+    // 2. Outer & inner gold rings
+    ctx.lineWidth = 7;
+    ctx.strokeStyle = goldGrad;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, cx - 104, cy - 120, 0, 0, Math.PI * 2);
+    ctx.lineWidth = 5;
+    ctx.stroke();
 
+    // 3. Curved motto on the top & bottom arcs
+    const motto = 'IN THE HEART OF THE FRAGRANT VELAIRE';
+    ctx.fillStyle = '#dec078';
+    ctx.font = '700 30px "Plus Jakarta Sans", Arial, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.font = '500 62px "Cormorant Garamond", Georgia, serif';
-    if ('letterSpacing' in ctx) ctx.letterSpacing = '14px';
-    ctx.fillText('EAU DE PARFUM', W / 2, lineY + 80);
-    ctx.font = '400 40px "Montserrat", Arial, sans-serif';
-    if ('letterSpacing' in ctx) ctx.letterSpacing = '10px';
-    ctx.fillText('50 ML  ·  1.7 FL.OZ', W / 2, lineY + 160);
+    drawArcText(ctx, motto, cx, cy, cx - 59, cy - 67, -Math.PI * 0.85, -Math.PI * 0.15, false);
+    drawArcText(ctx, motto, cx, cy, cx - 59, cy - 67, Math.PI * 0.85, Math.PI * 0.15, true);
+
+    // 4. Monogram & brand
+    ctx.fillStyle = goldGrad;
+    ctx.font = '600 120px "Cormorant Garamond", Georgia, serif';
+    ctx.fillText('VX', cx, cy - 215);
+    ctx.font = '600 58px "Cormorant Garamond", Georgia, serif';
+    if ('letterSpacing' in ctx) ctx.letterSpacing = '16px';
+    ctx.fillText('VELAIRE', cx + 8, cy - 100);
+    if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
+
+    // 5. Variant name & sub-label
+    ctx.font = '600 150px "Cormorant Garamond", Georgia, serif';
+    ctx.fillText('MyÓtte', cx, cy + 105);
+    ctx.fillStyle = '#dec078';
+    ctx.font = '600 34px "Plus Jakarta Sans", Arial, sans-serif';
+    if ('letterSpacing' in ctx) ctx.letterSpacing = '18px';
+    ctx.fillText('PERFUME', cx + 9, cy + 225);
 
     const tex = new THREE.CanvasTexture(cvs);
     tex.colorSpace = THREE.SRGBColorSpace;
     tex.anisotropy = maxAniso;
-    return { tex, aspect: W / H };
+    return tex;
   }
 
-  const logoImg = new Image();
-  logoImg.src = 'assets/3d/velaire-logo-gold.png';
-  const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+  const labelFonts = document.fonts
+    ? Promise.all([
+        document.fonts.load('600 120px "Cormorant Garamond"'),
+        document.fonts.load('700 30px "Plus Jakarta Sans"')
+      ]).catch(() => {})
+    : Promise.resolve();
 
-  Promise.all([logoImg.decode(), fontsReady]).then(() => {
-    const { tex, aspect } = buildLabelTexture(logoImg);
-    const labelH = 1.62;
-    const label = new THREE.Mesh(
-      new THREE.PlaneGeometry(labelH * aspect, labelH),
-      new THREE.MeshStandardMaterial({
-        map: tex, transparent: true, metalness: 0.55, roughness: 0.3,
-        emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 0.55,
-        envMapIntensity: 1.5, depthWrite: false,
-        polygonOffset: true, polygonOffsetFactor: -2
-      })
-    );
+  labelFonts.then(() => {
+    const labelGeo = new THREE.CircleGeometry(0.76, 96);
+    labelGeo.scale(1, 1.21, 1);
+    const tex = buildLabelTexture();
+    const label = new THREE.Mesh(labelGeo, new THREE.MeshStandardMaterial({
+      map: tex, transparent: true, metalness: 0.35, roughness: 0.32,
+      emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: 0.18,
+      envMapIntensity: 1.2,
+      polygonOffset: true, polygonOffsetFactor: -2
+    }));
     label.position.set(0, -0.02, FRONT_Z + 0.002);
     label.renderOrder = 4;
     bottle.add(label);
-  }).catch(() => {});
+  });
 
   loadTex('assets/3d/velaire-emblem.png').then(tex => {
     // Wrap emblem around the front of the cylindrical cap
@@ -334,10 +385,20 @@ function initBottle(container) {
   controls.enableZoom = false;
   controls.enablePan = false;
   controls.autoRotate = !reduceMotion;
-  controls.autoRotateSpeed = 1.6;
+  controls.autoRotateSpeed = 2.2;
   controls.minPolarAngle = Math.PI * 0.32;
   controls.maxPolarAngle = Math.PI * 0.56;
   renderer.domElement.style.touchAction = 'pan-y'; // keep vertical page scroll on mobile
+
+  // Cursor follow: the bottle gently tilts toward the mouse while hovering
+  const tilt = { x: 0, y: 0, tx: 0, ty: 0 };
+  container.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse') return;
+    const r = container.getBoundingClientRect();
+    tilt.ty = ((e.clientX - r.left) / r.width - 0.5) * 2;   // -1 … 1
+    tilt.tx = ((e.clientY - r.top) / r.height - 0.5) * 2;
+  });
+  container.addEventListener('pointerleave', () => { tilt.tx = 0; tilt.ty = 0; });
 
   let resumeTimer;
   controls.addEventListener('start', () => {
@@ -395,6 +456,10 @@ function initBottle(container) {
       }
       dustGeo.attributes.position.needsUpdate = true;
     }
+
+    tilt.x += (tilt.tx * 0.22 - tilt.x) * 0.07;
+    tilt.y += (tilt.ty * 0.6 - tilt.y) * 0.07;
+    bottle.rotation.set(tilt.x, tilt.y, 0);
 
     controls.update();
     renderer.render(scene, camera);
